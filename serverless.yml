@@ -1,0 +1,47 @@
+service: sls-rest-demo
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  apiGateway:
+    apiKeys:
+      - myApiKey
+
+functions:
+  getUser:
+    memorySize: 128
+    handler: src/getUser.handler
+    events:
+      - http:
+          path: /users
+          method: get
+          private: false
+
+  greet:
+    memorySize: 128
+    handler: src/greet.handler
+    events:
+      - http:
+          path: /greet
+          method: get
+          private: false
+
+  createUser:
+    memorySize: 128
+    handler: src/createUser.handler
+    events:
+      - http:
+          path: /users
+          method: post
+          private: false
+  
+  private:
+    memorySize: 128
+    handler: src/private.handler
+    events:
+      - http:
+          path: /private
+          method: get
+          private: true
