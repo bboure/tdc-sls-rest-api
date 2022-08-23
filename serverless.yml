@@ -10,15 +10,6 @@ provider:
       - myApiKey
 
 functions:
-  getUser:
-    memorySize: 128
-    handler: src/getUser.handler
-    events:
-      - http:
-          path: /users
-          method: get
-          private: false
-
   greet:
     memorySize: 128
     handler: src/greet.handler
@@ -26,7 +17,6 @@ functions:
       - http:
           path: /greet
           method: get
-          private: false
 
   createUser:
     memorySize: 128
@@ -35,7 +25,6 @@ functions:
       - http:
           path: /users
           method: post
-          private: false
   
   private:
     memorySize: 128
